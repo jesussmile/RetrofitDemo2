@@ -9,6 +9,7 @@ public class Constants {
 
         //static makes it uniform value across all the class instances.. ensures that
         // you don't waste memory creating many of the same thing if it will be the same value for all objects.
+  //      public static final String BASE_URL = "http://services.hanselandpetal.com";
         public static final String BASE_URL = "http://services.hanselandpetal.com";
 
 

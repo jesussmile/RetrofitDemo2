@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.pannam.retrofitdemo2.adapter.FlowerAdapter;
 import com.example.pannam.retrofitdemo2.controller.RestManager;
@@ -53,17 +55,19 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Flower>> call, Throwable t) {
-
+                Toast.makeText(getApplicationContext(),t.getMessage(),
+                        Toast.LENGTH_LONG).show();
+                Log.e("Retrofit", "No connection " + t.getMessage());
             }
         });
 
         //stop service
-        listCall.cancel();
+       // listCall.cancel();
     }
 
     private void configViews() {
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mRecyclerView = (RecyclerView)this.findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setRecycledViewPool(new RecyclerView.RecycledViewPool());
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),

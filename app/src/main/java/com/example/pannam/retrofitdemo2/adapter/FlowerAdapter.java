@@ -12,8 +12,6 @@ import com.example.pannam.retrofitdemo2.R;
 import com.example.pannam.retrofitdemo2.model.Flower;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +34,8 @@ public class FlowerAdapter extends RecyclerView.Adapter<FlowerAdapter.Holder> {
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         //loading the recycler view
-        View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_item, parent, false);
+        View row = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.row_item, parent, false);
 
 
         //create new holder object
@@ -50,7 +49,8 @@ public class FlowerAdapter extends RecyclerView.Adapter<FlowerAdapter.Holder> {
         holder.mName.setText(currFlower.getName());
         holder.mPrice.setText(Double.toString(currFlower.getPrice()));
 
-        Picasso.with(holder.itemView.getContext()).load(currFlower.getPhoto()).into(holder.mPhoto);
+        Picasso.with(holder.itemView.getContext())
+                .load(currFlower.getPhoto()).into(holder.mPhoto);
 
 
     }
