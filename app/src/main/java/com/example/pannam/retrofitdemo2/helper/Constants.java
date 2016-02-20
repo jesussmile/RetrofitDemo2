@@ -18,4 +18,14 @@ public class Constants {
     public static final class DATABASE{
 
     }
+
+    public static final class REFERENCE {
+        public static final String FLOWER = Config.PACKAGE_NAME + " flower";
+    }
+
+
+    public static final class Config{
+        public static final String PACKAGE_NAME ="com.example.pannam.retrofitdemo2";
+    }
+
 }

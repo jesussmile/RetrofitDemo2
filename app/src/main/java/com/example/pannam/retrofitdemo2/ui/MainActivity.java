@@ -1,5 +1,6 @@
-package com.example.pannam.retrofitdemo2;
+package com.example.pannam.retrofitdemo2.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,8 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.pannam.retrofitdemo2.R;
 import com.example.pannam.retrofitdemo2.adapter.FlowerAdapter;
 import com.example.pannam.retrofitdemo2.controller.RestManager;
+import com.example.pannam.retrofitdemo2.helper.Constants;
 import com.example.pannam.retrofitdemo2.model.Flower;
 
 import java.util.List;
@@ -17,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements FlowerAdapter.FlowerClickListener{
 
     private RecyclerView mRecyclerView;
     private RestManager mManager;
@@ -72,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setRecycledViewPool(new RecyclerView.RecycledViewPool());
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.VERTICAL,false));
-        mFlowerAdapter = new FlowerAdapter();
+        mFlowerAdapter = new FlowerAdapter(this);
 
 
         mRecyclerView.setAdapter(mFlowerAdapter);
@@ -80,4 +83,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(int position) {
+
+        Flower selectedFlower = mFlowerAdapter.getSelectedFlower(position);
+        Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+        intent.putExtra(Constants.REFERENCE.FLOWER,selectedFlower);
+        startActivity(intent);
+    }
 }
+
+
+

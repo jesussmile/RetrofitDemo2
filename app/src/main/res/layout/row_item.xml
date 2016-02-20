@@ -7,11 +7,10 @@
 
     <ImageView
         android:id="@+id/flowerPhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:background="@mipmap/ic_launcher"
-        android:minHeight="80dp"
-        android:minWidth="80dp"
+
         android:scaleType="centerCrop"/>
 
     <LinearLayout
